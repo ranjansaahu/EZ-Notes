@@ -1,0 +1,63 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+<div class="container" style="padding: 10rem; background-color: aquamarine">
+  <div style="margin-top: 10px">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="taskName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.taskName }}</td>
+        </ng-container>
+
+        <!-- taskBody Column -->
+        <ng-container matColumnDef="taskBody">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Body</th>
+          <td mat-cell *matCellDef="let row">{{ row.taskBody }}</td>
+        </ng-container>
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let row">
+            <a
+              mat-icon-button
+              color="primary"
+              [routerLink]="['/edit_note', row.id]"
+            >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button (click)="deleteNotes(row.id)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            No data matching the filter "{{ input.value }}"
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
