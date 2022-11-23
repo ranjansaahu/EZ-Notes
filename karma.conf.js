@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/gkeep'),
+      dir: require('path').join(__dirname, './coverage/notes'),
       subdir: '.',
       reporters: [
         { type: 'html' },

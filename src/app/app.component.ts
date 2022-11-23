@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { NotesServiceService } from './services/notes-service.service';
+import { NotesServiceService } from './services/notes.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { NotesServiceService } from './services/notes-service.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'GKeep';
+  title = 'EZ Notes';
   displayedColumns: string[] = ['taskName', 'taskBody', 'action'];
   dataSource!: MatTableDataSource<any>;
 

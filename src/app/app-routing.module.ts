@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditTaskComponent } from './edit-task/edit-task.component';
-import { NotesComponent } from './notes/notes.component';
 
-const routes: Routes = [
-  { path: '', component: NotesComponent },
-  { path: 'edit_note/:id', component: EditTaskComponent },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
